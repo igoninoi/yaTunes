@@ -1,3 +1,3 @@
 export const videoPlayerInit = () => {
-    console.log('video Init')
+    console.log('Video Init')
 }
