@@ -1,15 +1,11 @@
 export const videoPlayerInit = () => {
-// video-player
-// video-button__play
-// video-button__stop
-// video-time__passed
-// video-progress
-// video-time__total    
 
     const videoPlayer = document.querySelector('.video-player');
+    
     const videoButtonPlay = document.querySelector('.video-button__play');
     const videoButtonStop = document.querySelector('.video-button__stop');
-    const videoTimePssed = document.querySelector('.video-time__passed');
+    
+    const videoTimePassed = document.querySelector('.video-time__passed');
     const videoProgress = document.querySelector('.video-progress');
     const videoTimeTotal = document.querySelector('.video-time__total');
 
@@ -21,7 +17,6 @@ export const videoPlayerInit = () => {
             videoButtonPlay.classList.add('fa-pause');
             videoButtonPlay.classList.remove('fa-play');
         }
-
     }
 
     const togglePlay = () => {
@@ -31,25 +26,27 @@ export const videoPlayerInit = () => {
             videoPlayer.pause();
         }
 
-        //toggleIcon();
+        //toggleIcon(); can be used instead Play and Pause event listeners
     };
 
     const stopPlay = () => {
         videoPlayer.pause();
         videoPlayer.currentTime = 0;
-
     }
 
     const addZero = n => n < 10 ? '0' + n : n;
 
+    // Play and Pause handling
     videoPlayer.addEventListener('click', togglePlay);
     videoButtonPlay.addEventListener('click', togglePlay);
 
     videoPlayer.addEventListener('play', toggleIcon)
     videoPlayer.addEventListener('pause', toggleIcon)
 
+    // Stop control handling
     videoButtonStop.addEventListener('click', stopPlay);
 
+    // Time output handling
     videoPlayer.addEventListener('timeupdate', () => {
         const currentTime = videoPlayer.currentTime;
         const duration = videoPlayer.duration;
@@ -62,10 +59,11 @@ export const videoPlayerInit = () => {
         let minutesTotal = Math.floor(duration / 60);
         let secondsTotal = Math.floor(duration % 60);
 
-        videoTimePssed.textContent = `${addZero(minutesPassed)}:${addZero(secondsPassed)}`;
+        videoTimePassed.textContent = `${addZero(minutesPassed)}:${addZero(secondsPassed)}`;
         videoTimeTotal.textContent = `${addZero(minutesTotal)}:${addZero(secondsTotal)}`;        
     });
     
+    // Time change handling
     videoProgress.addEventListener('change', () => {
         const duration = videoPlayer.duration;
         const value = videoProgress.value;
