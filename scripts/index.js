@@ -10,6 +10,7 @@ const temp = document.querySelector('.temp');
 
 const deactivationPlayer = () => {
     temp.getElementsByClassName.display = 'none';
+    
     playerBtn.forEach(item => item.classList.remove('active'));
     playerBlock.forEach(item => item.classList.remove('active'));
 };
@@ -20,7 +21,6 @@ playerBtn.forEach((btn, i) => btn.addEventListener('click', () => {
     btn.classList.add('active');
     playerBlock[i].classList.add('active');
 }));
-
 
 
 videoPlayerInit();
