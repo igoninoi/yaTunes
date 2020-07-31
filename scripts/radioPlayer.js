@@ -11,7 +11,7 @@ export const radioPlayerInit = () => {
 
     const audio = new Audio();
     audio.type = 'audio/aac';
-    
+
     audio.volume = radioVolume.value / 100;;
 
     radioStop.disabled = true;
@@ -28,7 +28,7 @@ export const radioPlayerInit = () => {
             radioStop.classList.remove('fa-play');
             radioStop.classList.add('fa-stop');
         }
-    }
+    };
 
     const togglePlaying = () => {
         if (audio.paused) {
@@ -37,13 +37,13 @@ export const radioPlayerInit = () => {
             audio.pause();
         }
         changeIconPlay();
-    }
+    };
 
-
-    const selectItem = elem => {
+    const selectItem = (elem) => {
         radioItem.forEach(item => item.classList.remove('select'));
         elem.classList.add('select');
-    }
+    };
+
 
     radioNavigation.addEventListener('change', event => {
         const target = event.target;
@@ -62,22 +62,27 @@ export const radioPlayerInit = () => {
 
         audio.play();
         changeIconPlay();
-    })
+    });
 
     
     radioStop.addEventListener('click', () => {
         togglePlaying();
-    })
+    });
 
     radioCoverImg.addEventListener('click', () => {
         if (!radioStop.disabled) {
             togglePlaying();
         }
-    })
+    });
 
     radioVolume.addEventListener('input', () => {
         audio.volume = radioVolume.value / 100;
-    })
+    });
 
-
+    radioPlayerInit.stop = () => {
+        if (!audio.paused) {
+            audio.pause();
+            changeIconPlay();
+        }
+    };
 }

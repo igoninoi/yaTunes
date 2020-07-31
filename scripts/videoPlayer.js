@@ -1,3 +1,5 @@
+import { addZero } from './supScript.js';
+
 export const videoPlayerInit = () => {
 
     const videoPlayer = document.querySelector('.video-player');
@@ -38,7 +40,7 @@ export const videoPlayerInit = () => {
         videoPlayer.currentTime = 0;
     }
 
-    const addZero = n => n < 10 ? '0' + n : n;
+    // const addZero = n => n < 10 ? '0' + n : n; -- moved to supScript.js
 
     // Play and Pause handling
     videoPlayer.addEventListener('click', togglePlay);
@@ -73,16 +75,21 @@ export const videoPlayerInit = () => {
         const value = videoProgress.value;
         
         videoPlayer.currentTime = (value * duration) / 100;
-    })
+    });
 
     videoFullscreen.addEventListener('click', () => {
         videoPlayer.requestFullscreen();
-    })
+    });
 
     videoVolume.addEventListener('input', () => {
         videoPlayer.volume = videoVolume.value / 100;
-    })
+    });
 
+    videoPlayerInit.stop = () => {
+        if (!videoPlayer.paused) {
+            videoPlayer.pause(); //stopPlay();
+        }
+    }
 
 }
 
