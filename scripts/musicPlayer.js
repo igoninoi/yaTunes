@@ -11,6 +11,7 @@ export const musicPlayerInit = () => {
     const audioProgressTiming = document.querySelector('.audio-progress__timing');
     const audioTimePassed = document.querySelector('.audio-time__passed');
     const audioTimeTotal = document.querySelector('.audio-time__total');
+    const audioVolume = document.querySelector('.audio-volume');
 
     const playlist = ['hello', 'flow', 'speed'];
     let trackIndex = 0;
@@ -24,7 +25,12 @@ export const musicPlayerInit = () => {
         audioImg.src = `./audio/${track}.jpg`;
         audioPlayer.src = `./audio/${track}.mp3`;
         audioPlayer.currentTime = 0;
-        setTimeout(updateTime, 500); //updateTime();
+        
+        //updateTime();
+        //setTimeout(updateTime, 500); 
+        audioPlayer.addEventListener('canplay', () => {
+            updateTime();
+        })
 
         if (isPlayed) {
             audioPlayer.play();
@@ -122,6 +128,11 @@ export const musicPlayerInit = () => {
         audioPlayer.currentTime = progress;
     });
 
+    audioVolume.addEventListener('input', () => {
+        audioPlayer.volume = audioVolume.value / 100;
+    });
+
+    
     musicPlayerInit.stop = () => {
         if (!audioPlayer.paused) {
             audioPlayer.pause();

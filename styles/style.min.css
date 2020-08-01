@@ -16,7 +16,13 @@ html{-webkit-box-sizing:border-box;box-sizing:border-box}*,*::before,*::after{-w
     max-width: 100px;
 }
 
-.radio-volume {
-    max-width: 200px;
+.audio-volume {
+    max-width: 100px;
 }
+
+.radio-volume {
+    max-width: 100px;
+}
+
+
 /*# sourceMappingURL=style.min.css.map */

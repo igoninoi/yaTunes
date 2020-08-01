@@ -22,7 +22,7 @@
 	<meta name="msapplication-TileImage" content="favicon/ms-icon-144x144.png">
 	<meta name="theme-color" content="#ffffff">
 	<title>ЯTunes</title>
-	<script src="scripts/index.js" type="module"></script>
+	<script src="scripts/index.js" type="module" defer></script>
 	<link rel="stylesheet" href="styles/normalize.css">
 	<link rel="stylesheet" href="styles/font-awesome.min.css">
 	<link rel="stylesheet" href="styles/style.min.css">
@@ -92,6 +92,11 @@
 						<div class="audio-progress__timing"></div>
 					</div>
 					<span class="audio-time audio-time__total">00:00</span>
+
+					<span class="fa fa-volume-down volume-icon"></span>
+					<input type="range" class="audio-volume" min="0" max="100" step="1" value="100">
+					<span class="fa fa-volume-up volume-icon"></span>
+
 				</nav>
 			</footer>
 		</article>
